@@ -9,6 +9,6 @@ const db = mysql2.createConnection({
     database: "complete_company_db"
 });
 
-const promiseConnection = connection.promise();
+const promiseConnection = db.promise();
 
 module.exports = promiseConnection;
