@@ -1,16 +1,7 @@
 // require all these modules
 const inquirer = require("inquirer");
 const consoleTable = require('console.table');
-const mysql2 = require('mysql2');
 
-
-//setting up database connection here
-const db = mysql2.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "complete_company_db"
-});
 
 
 

@@ -1,10 +1,10 @@
-# note-taker
+# employee-taker
 
-A note taker
+A system to manage employees across company departments
 
 ## Website
 
-[Cleck Here to Visit the Deployed Site](https://mtg-note-taker.herokuapp.com/)
+[Click here to see a walkthrough video of my Employee Tracker app](https://mtg-note-taker.herokuapp.com/)
 
 ## Description
 
@@ -32,26 +32,22 @@ You need to have Node.js and Express.js installed. In your terminal, navigate to
 
 ## Technology
 
-- Express.js
-  [Learn about Express.js](https://expressjs.com/)
+- Console.table
+  [Learn about Console.table](https://www.npmjs.com/package/console.table)
 
 - Node.js
   [Learn about Node.js](https://nodejs.org/en)
 
-- Heroku
-  [Learn about Heroku](https://www.heroku.com/home)
+- MySQL2
+  [Learn about MySQL2](https://www.npmjs.com/package/mysql2)
+- MYSQL
+  [Learn about MySQL](https://dev.mysql.com/)
 
-- Insomnia
-  [Learn about Insomnia](https://insomnia.rest/)
+- Inquirer
+  [Learn about Inquirer](https://www.npmjs.com/package/inquirer)
 
 - JavaScript
   [Learn about JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
-- HTML
-  [Learn about HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-
-- CSS
-  [Learn about CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 - Git
   [Learn about Git](https://git-scm.com/)
