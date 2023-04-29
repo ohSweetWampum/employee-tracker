@@ -7,7 +7,7 @@ USE complete_company_db;
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(30) NOT NULL
+  department_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE role (
@@ -20,7 +20,7 @@ CREATE TABLE role (
     ON DELETE SET NULL
 );
 
-CREATE TABLE employee (
+CREATE TABLE employees (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE employee (
     REFERENCES role(id)
     ON DELETE SET NULL
     FOREIGN KEY (manager_id)
-    REFERENCES employee(id)
+    REFERENCES employees(id)
     ON DELETE SET NULL
 );
 

@@ -8,7 +8,13 @@ const consoleTable = require('console.table');
 
 
 
+// Using await
+const { name } = await addDepartmentQuestions();
 
+// Or using .then()
+addDepartmentQuestions().then(({ name }) => {
+  // Do something with the name
+});
 
 
 // need to create a function to display the main menu using Inquirer. This function should prompt the user with the available options (view all departments, view all roles, etc.) and call the corresponding functions based on user input.
