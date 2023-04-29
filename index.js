@@ -1,4 +1,24 @@
-// need to set up  database connection in index.js using mysql module.
+// require all these modules
+const inquirer = require("inquirer");
+const consoleTable = require('console.table');
+const mysql2 = require('mysql2');
+
+
+//setting up database connection here
+const db = mysql2.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "complete_company_db"
+});
+
+
+
+
+
+
+
+
 
 // need to create a function to display the main menu using Inquirer. This function should prompt the user with the available options (view all departments, view all roles, etc.) and call the corresponding functions based on user input.
 
