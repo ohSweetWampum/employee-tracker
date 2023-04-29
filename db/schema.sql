@@ -1,9 +1,38 @@
---  this file will contain the SQL queries to create the necessary tables in my database.
 
--- I need to define the schema for my database in schema.sql. I need tables for departments, roles, and employees, as well as for foreign key constraints.
 
--- need to connect to my mysql server and run the schema.sql file to create the tables.
+DROP DATABASE IF EXISTS complete_company_db;
+CREATE DATABASE complete_company_db;
 
+USE complete_company_db;
+
+CREATE TABLE department (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE role (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL (7,2) NOT NULL,
+    department_id INT,
+    FOREIGN KEY (department_id )
+    REFERENCES department(id)
+    ON DELETE SET NULL
+);
+
+CREATE TABLE employee (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    role_id INT,
+    manager_id INT,
+    FOREIGN KEY (role_id)
+    REFERENCES role(id)
+    ON DELETE SET NULL
+    FOREIGN KEY (manager_id)
+    REFERENCES employee(id)
+    ON DELETE SET NULL
+);
 
 
 
