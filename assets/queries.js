@@ -3,19 +3,30 @@ const promiseConnection = require('./connector');
 
 
 const viewAllEmployees = async () => {
-  const [rows] = await promiseConnection.query('SELECT * FROM employee');
+  const [rows] = await promiseConnection.query(`
+    SELECT employees.first_name, employees.last_name, employees.manager_id, role.title, role.salary, department.department_name as department_name
+    FROM employees
+    INNER JOIN role ON employees.role_id = role.id 
+    INNER JOIN department ON role.department_id = department.id;
+  `);
   console.table(rows);
 };
 
+
 const addAnEmployee = async (employeeData) => {
-  await promiseConnection.query('INSERT INTO employee SET ?', employeeData);
-  console.log(`Employee ${employeeData.firstName} ${employeeData.lastName} added successfully.`);
+  await promiseConnection.query('INSERT INTO employees SET ?', employeeData);
+  console.log(`Employees ${employeeData.firstName} ${employeeData.lastName} added successfully.`);
 };
 
-const updateEmployee = async (employeeData) => {
-  await promiseConnection.query('UPDATE employee SET role_id = ? WHERE id = ?', [employeeData.role_id, employeeData.employee_id]);
-  console.log(`Employee ${employeeData.firstName} ${employeeData.lastName} updated successfully.`);
+const updateEmployee = async (updateData) => {
+  await promiseConnection.query('UPDATE employees SET role_id = ?, manager_id = ? WHERE id = ?', [
+    updateData.role_id,
+    updateData.manager_id,
+    updateData.employee_id,
+  ]);
+  console.log(`Employee with ID ${updateData.employee_id} updated successfully.`);
 };
+
 
 const viewAllRoles = async () => {
   const [rows] = await promiseConnection.query('SELECT * FROM role');
@@ -33,9 +44,11 @@ const viewAllDepartments = async () => {
 };
 
 const addADepartment = async (departmentData) => {
-  await promiseConnection.query('INSERT INTO department SET ?', departmentData);
-  console.log(`Department ${departmentData.name} added successfully.`);
+  await promiseConnection.query('INSERT INTO department (department_name) VALUES (?)', [departmentData.department_name]);
+
+  console.log(`Department ${departmentData.department_name} added successfully.`);
 };
+
 
 module.exports = {
   viewAllEmployees,

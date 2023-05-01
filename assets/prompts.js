@@ -1,10 +1,8 @@
-//import required packages
+
 const inquirer = require('inquirer');
 
-//need to link my queries.js file to this which will handle/preform the database queries based off the user selctions
-const queriesFile = require('./queries'); 
 
-//main menu options
+
 const mainMenu =  () => {
     return inquirer.prompt([
     {
@@ -26,19 +24,19 @@ const mainMenu =  () => {
 };
 
 
-//add department prompt
+
 const addADepartment =  () => {
     return inquirer.prompt([
     {
       type: 'input',
-      name: 'addDepartment',
+      name: 'department_name',
       message: 'What is the name of the new department?'
     }
   ]);
 };
 
 
-//add role prompt
+
 const addARole =  () => {
     return inquirer.prompt([
     {
@@ -53,7 +51,7 @@ const addARole =  () => {
       },
       {
         type: 'list',
-        name: 'department',
+        name: 'department_id',
         message: 'What department will this new role be added to?',
         choices: [
             'Engineering',
@@ -94,7 +92,7 @@ const addAnEmployee =  () => {
 };
 
 
-//update employee info
+
 const updateEmployee =  () => {
     return inquirer.prompt([
     {
@@ -129,7 +127,7 @@ const updateEmployee =  () => {
 
 
 
-//Need to export this prompts for use in other files
+
 module.exports = {
     mainMenu,
     addADepartment,

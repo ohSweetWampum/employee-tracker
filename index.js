@@ -1,4 +1,4 @@
-// require all these modules
+
 
 const prompts = require('./assets/prompts');
 const queries = require('./assets/queries');
@@ -28,16 +28,4 @@ const menuActions = {
   }
 };
 
-const main = async () => {
-  let exitApp = false;
 
-  while (!exitApp) {
-    const { menuSelections } = await prompts.mainMenu();
-    const action = menuActions[menuSelections];
-    if (action) {
-      exitApp = await action();
-    }
-  }
-};
-
-main();

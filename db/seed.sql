@@ -15,18 +15,19 @@ VALUES  ("Engineering"),
 
 
 INSERT INTO role(title, salary, department_id)
-VALUES  ("Lead Motivator, 100000, 6"),
-        ("Scientific Stallion, 200000, 6"),
-        ("Name Negotiator, 700000, 6"),
-        ("Resident Emo, 50000, 2"),
-        ("Sales Person, 230000, 4"),
-        ("Accountant, 329399, 2"),
-        ("Manager, 473933, 3"),
-        ("Assistant, 484933, 5"),
-        ("Front-End Softwarer Engineer, 234248, 1"),
-        ("Back-End Softwarer Engineer, 484848, 1"),
-        ("Janitor, 80000,5"),
-        ("lawyer, 100000, 3");
+VALUES  ("Lead Motivator", 100000, 6),
+        ("Scientific Stallion", 200000, 6),
+        ("Name Negotiator", 700000, 6),
+        ("Resident Emo", 50000, 2),
+        ("Sales Person", 230000, 4),
+        ("Accountant", 329399, 2),
+        ("Manager", 473933, 3),
+        ("Assistant", 484933, 5),
+        ("Front-End Softwarer Engineer", 234248, 1),
+        ("Back-End Softwarer Engineer", 484848, 1),
+        ("Janitor", 80000, 5),
+        ("Lawyer", 100000, 3);
+
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES 
@@ -48,7 +49,7 @@ VALUES
   ("Mia", "Garcia", 4, 19),
   ("Elijah", "Ramirez", 5, null),
   ("Elena", "Gomez", 4, 2),
-  ("Jacob", "Gonzalez", 5, ),
+  ("Jacob", "Gonzalez", 5, 8 ),
   ("Madison", "Taylor", 6, null),
   ("Liam", "Vasquez", 3, 25),
   ("Aiden", "Martinez", 4, 12),
