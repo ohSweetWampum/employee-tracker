@@ -1,4 +1,4 @@
-
+const consoleTable = require('console.table');
 const promiseConnection = require('./connector');
 
 
@@ -9,7 +9,7 @@ const viewAllEmployees = async () => {
     INNER JOIN role ON employees.role_id = role.id 
     INNER JOIN department ON role.department_id = department.id;
   `);
-  console.table(rows);
+  consoleTable(rows);
 };
 
 
@@ -20,9 +20,10 @@ const addAnEmployee = async (employeeData) => {
 
 const updateEmployee = async (updateData) => {
   await promiseConnection.query('UPDATE employees SET role_id = ?, manager_id = ? WHERE id = ?', [
-    updateData.role_id,
-    updateData.manager_id,
-    updateData.employee_id,
+    updateData.role,
+    updateData.manager,
+    updateData.lastName,
+    updateData.firstName
   ]);
   console.log(`Employee with ID ${updateData.employee_id} updated successfully.`);
 };
@@ -30,17 +31,17 @@ const updateEmployee = async (updateData) => {
 
 const viewAllRoles = async () => {
   const [rows] = await promiseConnection.query('SELECT * FROM role');
-  console.table(rows);
+  consoleTable(rows);
 };
 
 const addARole = async (roleData) => {
-  await promiseConnection.query('INSERT INTO role SET ?', roleData);
-  console.log(`Role ${roleData.title} added successfully.`);
+  await promiseConnection.query('INSERT INTO role SET ?', roleData.roleName);
+  console.log(`Role ${roleData.roleName} added successfully.`);
 };
 
 const viewAllDepartments = async () => {
   const [rows] = await promiseConnection.query('SELECT * FROM department');
-  console.table(rows);
+  consoleTable(rows);
 };
 
 const addADepartment = async (departmentData) => {

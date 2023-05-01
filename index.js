@@ -1,9 +1,34 @@
 
-
+const inquirer = require('inquirer'); 
 const prompts = require('./assets/prompts');
 const queries = require('./assets/queries');
 
-const menuActions = {
+//main menu function
+function mainMenuFunction() {
+  inquirer.prompt(prompts.mainMenu()) 
+    .then((responses) => {
+      switch (responses.menuSelections) {
+        case "View all employees": functionDirectory['View all employees'](); 
+        break;
+        case "Add an employee": functionDirectory['Add an employee'](); 
+        break;
+        case "Update an employee role": functionDirectory['Update an employee role'](); 
+        break;
+        case "View all roles": functionDirectory['View all roles']();
+        break;
+        case "Add a role": functionDirectory['Add a role'](); 
+        break;
+        case "View all departments": functionDirectory['View all departments'](); 
+        break;
+        case "Add department": functionDirectory['Add department']();
+        break;
+        case "Quit": functionDirectory['Quit'](); 
+        break;
+      }
+    })
+}
+//"look up table" that directs to a particular function in the queries.js file, based off the users selection, the specific function is then executed
+const functionDirectory = {
   'View all employees': queries.viewAllEmployees,
   'Add an employee': async () => {
     const employeeData = await prompts.addAnEmployee();
@@ -24,8 +49,9 @@ const menuActions = {
     await queries.addADepartment(departmentData);
   },
   'Quit': async () => {
-    return true;
+    console.log("Exiting...");
+    process.exit();
   }
 };
 
-
+mainMenuFunction();
