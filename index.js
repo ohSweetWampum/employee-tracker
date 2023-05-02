@@ -1,7 +1,10 @@
+const prompts = require("./assets/prompts");
+const queries = require("./assets/queries");
 
-const prompts = require('./assets/prompts');
-const queries = require('./assets/queries');
-
+(async () => {
+  await queries.seedDatabase();
+  mainMenuFunction();
+})();
 
 // mainMenuFunction();
 const functionDirectory = {
@@ -10,21 +13,21 @@ const functionDirectory = {
     const employeeData = await prompts.addAnEmployee();
     await queries.addAnEmployee(employeeData);
   },
-  "Update an employee role": async () => {
+  "Update an employee roles": async () => {
     const updateData = await prompts.updateEmployee();
     await queries.updateEmployee(updateData);
   },
-  "View all roles": queries.viewAllRoles,
-  "Add a role": async () => {
-    const roleData = await prompts.addARole();
-    await queries.addARole(roleData);
+  "View all roles": queries.viewAllroles,
+  "Add a roles": async () => {
+    const rolesData = await prompts.addAroles();
+    await queries.addAroles(rolesData);
   },
   "View all departments": queries.viewAllDepartments,
   "Add department": async () => {
     const departmentData = await prompts.addADepartment();
     await queries.addADepartment(departmentData);
   },
-  "Quit": async () => {
+  Quit: async () => {
     console.log("Exiting...");
     process.exit();
   },
@@ -34,12 +37,12 @@ async function mainMenuFunction() {
   try {
     const responses = await prompts.mainMenu();
     const selectedFunction = functionDirectory[responses.menuSelections];
-    if (typeof selectedFunction === 'function') {
+    if (typeof selectedFunction === "function") {
       await selectedFunction();
     }
-    mainMenuFunction(); 
+    mainMenuFunction();
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 }
 
