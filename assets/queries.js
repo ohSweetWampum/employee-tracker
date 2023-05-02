@@ -1,19 +1,4 @@
 const promiseConnection = require("./connector");
-// const seedSqlPath = path.join(__dirname, '..', 'db', 'seed.sql');
-
-// const fs = require("fs");
-// const path = require("path");
-
-// const seedDatabase = async () => {
-//   try {
-//     const seedSqlPath = path.join(__dirname, "..", "db", "seed.sql");
-//     const seedSql = fs.readFileSync(seedSqlPath, "utf8");
-//     await promiseConnection.query(seedSql);
-//     console.log("Database seeded successfully");
-//   } catch (error) {
-//     console.error(`Error seeding database: ${error.message}`);
-//   }
-//};
 
 const viewAllEmployees = async () => {
   const [rows] = await promiseConnection.query(`
@@ -123,7 +108,7 @@ module.exports = {
   addAroles,
   viewAllDepartments,
   addADepartment,
-  // seedDatabase,
+
   getAllDepartments,
   getAllRoles,
   getAllManagers,
