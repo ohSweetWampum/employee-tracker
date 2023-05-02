@@ -29,6 +29,15 @@ const addAnEmployee = async (employeeData) => {
   }
 };
 
+const viewAllEmployeesWithTitles = async () => {
+  const [rows] = await promiseConnection.query(`
+    SELECT employees.id, employees.first_name, employees.last_name, roles.title, employees.manager_id
+    FROM employees
+    JOIN roles ON employees.roles_id = roles.id;
+  `);
+  console.table(rows);
+};
+
 const updateEmployee = async (updateData) => {
   await promiseConnection.query(
     "UPDATE employees SET roles_id = ?, manager_id = ? WHERE id = ?",
@@ -108,6 +117,7 @@ module.exports = {
   addAroles,
   viewAllDepartments,
   addADepartment,
+  viewAllEmployeesWithTitles,
 
   getAllDepartments,
   getAllRoles,

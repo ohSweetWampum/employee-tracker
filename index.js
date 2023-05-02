@@ -2,8 +2,11 @@ const prompts = require("./assets/prompts");
 const queries = require("./assets/queries");
 
 (async () => {
-  await queries.seedDatabase();
-  mainMenuFunction();
+  try {
+    await queries.viewAllEmployeesWithTitles();
+  } catch (err) {
+    console.error("Error:", err);
+  }
 })();
 
 // mainMenuFunction();
